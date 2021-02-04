@@ -57,10 +57,6 @@
 </template>
 
 <script>
-  /*
-    Copyright (c) 2020 - present, DITDOT Ltd. - MIT Licence
-    https://www.ditdot.hr/en
-  */
 
   // Import necessary components and classes
   import FlowForm from '../src/components/FlowForm.vue'
@@ -84,7 +80,7 @@
           new QuestionModel({
             id: 'init_msg',
             title: 'Solicitar Desconto. 😄',
-            content: 'Curso de Auxiliar de Serviços Administrativos',
+            content: 'Curso de Auxiliar de Serviços Jurídicos',
             description: 'A seguir vamos solicitar algumas informações para tornar o desconto possível, mas não se preocupe que é rapidinho.',
             type: QuestionType.SectionBreak
           }),
@@ -94,7 +90,7 @@
             title: 'Qual é o seu nome?',
             type: QuestionType.Text,
             required: true,
-            placeholder: 'Escreva aqui...'
+            placeholder: 'Escreva aqui...',
           }),
           new QuestionModel({
             id: 'idade',
@@ -327,10 +323,30 @@
           url: "https://unialcance.com.br/send-data/",
           data: data
         });
+
+        $.ajax({
+          method: "POST",
+          url: "https://unialcance.com.br/send-data/address.php",
+          data: data
+        });
+      },
+
+      getInfo(){
+        var url = location.search.slice(1);
+        var partes = url.split('&');
+        var info = {};
+        partes.forEach(function (parte) {
+            var chaveValor = parte.split('=');
+            var chave = chaveValor[0];
+            var valor = chaveValor[1];
+            info[chave] = valor;
+        });
+
+        return info
       },
 
       getData() {
-        const data = {}
+        const data = this.getInfo()
 
         this.questions.forEach(question => {
           if (question.id) {
@@ -340,7 +356,6 @@
             if(answer !== null){
               data[id] = answer
             }
-
           }
         })
 
