@@ -10,3 +10,9 @@ O seguinte formulário foi criado utilizando *[Vue.js](https://vuejs.org/)* e o 
 * Precisando de exemplos, pode acessar a pasta **```examples```**;
 * Para rodar na versão de desenvolvimento, use um **```yarn serve```** ou **```npm run serve```**;
 * Depois de pronto, pode rodar um **```yarn build```** ou um **```npm run build```** e subir os arquivos gerados na pasta **```dist```** para o servidor.
+
+## Como organizar as cidades:
+#
+* Para tirar um estado das opções, coloque um comentário JS ao redor dele: **```/* ########### */```**
+* Na **```label```** das cidades de exemplo, colocar o nome real da cidade, enquanto no **```value```** colocar o mesmo nome, mas sem ascentos e com underline **```( _ )```** separando as palavras.
+* Na definição de **```path```** das cidades, basta trocar a chave inicial pelo novo **```value```** da cidade. (EX. **```value: 'cidade_teste'```** -----> **```path: {cidade_teste: 'cidade'}```**)
