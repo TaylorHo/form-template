@@ -320,15 +320,10 @@
         
         $.ajax({
           method: "POST",
-          url: "https://unialcance.com.br/send-data/",
+          url: "#",
           data: data
         });
 
-        $.ajax({
-          method: "POST",
-          url: "https://unialcance.com.br/send-data/address.php",
-          data: data
-        });
       },
 
       getInfo(){
